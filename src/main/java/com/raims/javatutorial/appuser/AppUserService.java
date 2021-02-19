@@ -34,7 +34,7 @@ public class AppUserService implements UserDetailsService {
 
     public String signUpUser(AppUser appUser) {
         boolean emailExists = appUserRepository.findByEmail(appUser.getEmail()).isPresent();
-        if (emailExists)
+        if (emailExists && appUser.getEnabled())
             throw new RegistrationException(
                     EMAIL_ALREADY_REGISTERED, appUser.getEmail()
             );
@@ -47,8 +47,6 @@ public class AppUserService implements UserDetailsService {
                 appUser
         );
         confirmationTokenService.saveConfirmationToken(Confirmationtoken);
-
-        // TODO : Send email
 
         return Confirmationtoken.getToken();
     }

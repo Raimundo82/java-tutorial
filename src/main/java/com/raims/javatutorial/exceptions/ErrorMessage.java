@@ -9,7 +9,8 @@ public enum ErrorMessage {
     EMAIL_NOT_VALID("email %s is not valid"),
     TOKEN_NOT_FOUND("token %s not found"),
     EMAIL_ALREADY_CONFIRMED("Email %s already confirmed"),
-    TOKEN_EXPIRED("Token %s has already expired");
+    TOKEN_EXPIRED("Token %s has already expired"),
+    FAIL_SENDING_EMAIL("Failed to send email to %s");
 
     public final String label;
 }
